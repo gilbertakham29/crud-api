@@ -1,5 +1,5 @@
 var Airtable = require('airtable');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 dotenv.config();
 Airtable.configure({
     apiKey:process.env.AIRTABLE_API_KEY
@@ -57,3 +57,8 @@ base('tblhZWtvvNSAegrdN').update([
 
 
 // this is to delete a record from the table
+base('tblhZWtvvNSAegrdN').destroy(['rec53nnDL8derXbfK']).then(record=>{
+    console.log("Deleted Successfully");
+}).catch(err=>{
+    console.error("Error in deleting record",err);
+})
