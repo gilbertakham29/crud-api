@@ -8,7 +8,7 @@ const base = Airtable.base('appiNDoKSEV2K5yFf')
 
 // this is to get a record from table
 base('tblhZWtvvNSAegrdN').select({
-    maxRecords:2,
+    maxRecords:11,
 }).eachPage(function page(records,fetchNextPage){
     records.forEach(function(record){
         console.log('Details' + ' ' + record.get('Name') + ' ' + record.get('Age'));
@@ -19,23 +19,22 @@ base('tblhZWtvvNSAegrdN').select({
         console.error(err); return;
     }
 })
-
 //to create a record in a table
 base('tblhZWtvvNSAegrdN').create([
     {
         "fields":{
-            "Name":"Smith",
-            "Age":"16"
+            "Name":"Ritesh",
+            "Age":"22"
         }
     },
     {
         "fields":{
-            "Name":"Tom",
-            "Age":"32"
+            "Name":"Rajesh",
+            "Age":"34"
         }
     }
 ]).then(record =>{
-    console.log('Create record:',record);
+    console.log('Created record:',record);
 }).catch(err => {
     console.error('Error creating record:',err);
 })
@@ -43,10 +42,10 @@ base('tblhZWtvvNSAegrdN').create([
 // update records in a table using id
 base('tblhZWtvvNSAegrdN').update([
     {
-        "id" : "recPHU4xUDUsE9mlT",
+        "id" : "recnfiXv4yoRYhZZP",
         "fields":{
-            "Name":"Harry",
-            "Age":"40"
+            "Name":"Praveen",
+            "Age":"21"
         }
     }
 ]).then(record => {
@@ -57,7 +56,7 @@ base('tblhZWtvvNSAegrdN').update([
 
 
 // this is to delete a record from the table
-base('tblhZWtvvNSAegrdN').destroy(['rec53nnDL8derXbfK']).then(record=>{
+base('tblhZWtvvNSAegrdN').destroy(['recnfiXv4yoRYhZZP']).then(record=>{
     console.log("Deleted Successfully");
 }).catch(err=>{
     console.error("Error in deleting record",err);
